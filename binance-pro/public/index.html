@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BinancePro – Trade Crypto Risk-Free</title>
+<meta name="description" content="Practice spot, limit and futures trading with live prices and 10,000 virtual USDT.">
+<meta name="theme-color" content="#0a0d12">
+<meta property="og:title" content="BinancePro – Trade Crypto Risk-Free">
+<meta property="og:description" content="Practice spot, limit and futures trading with live prices and 10,000 virtual USDT.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23fcd535'/%3E%3Cpath d='M32 12l16 20-16 20-16-20z' fill='%23111'/%3E%3C/svg%3E">
+<script>try{var p=JSON.parse(localStorage.getItem('prefs')||'{}');document.documentElement.setAttribute('data-theme',p.theme==='light'?'light':'dark')}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0d12;--card:#121821;--card2:#182030;--line:#222c3b;--text:#eef1f6;--mute:#8793a6;--y:#fcd535;--y2:#f0b90b;--yt:#fcd535;--g:#0ecb81;--r:#f6465d;--rad:16px;--hdr:rgba(10,13,18,.85);--tk:rgba(18,24,33,.5)}
+:root[data-theme=light]{--bg:#f3f5f9;--card:#ffffff;--card2:#edf0f5;--line:#dde2ea;--text:#151a24;--mute:#64708a;--yt:#9a7200;--g:#0a9f66;--r:#d6293f;--hdr:rgba(255,255,255,.88);--tk:rgba(255,255,255,.7)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(600px 400px at 85% -5%,rgba(252,213,53,.12),transparent 60%),radial-gradient(500px 400px at -5% 30%,rgba(14,203,129,.08),transparent 60%)}
+button{font-family:inherit}
+.up{color:var(--g)}.down{color:var(--r)}.mute{color:var(--mute)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--hdr);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{max-width:1280px;margin:auto;display:flex;align-items:center;gap:24px;padding:12px 20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px;cursor:pointer}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--y),var(--y2));display:grid;place-items:center;color:#000;font-style:normal;font-size:16px}
+nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{padding:8px 13px;border-radius:10px;color:var(--mute);cursor:pointer;font-weight:500;white-space:nowrap;transition:.15s}
+nav a:hover{color:var(--text);background:var(--card)}
+nav a.on{color:var(--yt);background:var(--card)}
+.right{display:flex;align-items:center;gap:12px;margin-left:auto}
+#total{font-weight:600}
+#authArea{display:flex;align-items:center;gap:10px;position:relative}
+.user{display:flex;align-items:center;gap:10px;cursor:pointer;padding:3px 6px 3px 3px;border-radius:99px;border:1px solid var(--line);background:var(--card)}
+.user:hover{border-color:var(--mute)}
+.av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--y),var(--y2));color:#111;display:grid;place-items:center;font-weight:800;flex-shrink:0}
+.av.lg{width:76px;height:76px;font-size:32px}
+.hi{font-weight:500;white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+.hi b{color:var(--yt)}
+.caret{color:var(--mute);font-size:11px;padding-right:4px}
+.menu{display:none;position:absolute;right:0;top:50px;width:230px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:30}
+.menu.on{display:block}
+.menu .mh{padding:10px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.menu .mh b{display:block}
+.menu .mh span{font-size:12px;color:var(--mute);word-break:break-all}
+.menu a{display:block;padding:10px 12px;border-radius:9px;cursor:pointer;font-weight:500}
+.menu a:hover{background:var(--card2)}
+.menu a.out{color:var(--r)}
+.btn{background:linear-gradient(135deg,var(--y),var(--y2));color:#111;border:0;padding:10px 20px;border-radius:12px;font-weight:700;cursor:pointer;font-size:14px;transition:.15s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(252,213,53,.25)}
+.btn.ghost{background:var(--card);color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{box-shadow:none;border-color:var(--mute)}
+.btn.red{background:var(--r);color:#fff}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:9px}
+
+.wrap{max-width:1280px;margin:auto;padding:20px}
+.view{display:none;animation:fade .3s ease}.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:20px}
+h2{font-size:18px;font-weight:700;margin-bottom:14px}
+.empty{text-align:center;padding:50px 10px;color:var(--mute)}
+.empty .btn{margin-top:14px}
+.pagetitle{font-size:28px;font-weight:800;letter-spacing:-.5px;margin-bottom:16px}
+.note{color:var(--mute);font-size:12px;margin-top:12px}
+.sk{height:16px;border-radius:8px;background:linear-gradient(90deg,var(--card2),var(--line),var(--card2));background-size:200% 100%;animation:sh 1.2s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+
+/* ticker */
+.ticker{border-bottom:1px solid var(--line);overflow:hidden;background:var(--tk)}
+.track{display:flex;gap:36px;width:max-content;padding:9px 0;animation:scroll 60s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.tk{display:flex;gap:8px;white-space:nowrap;font-size:13px}
+.tk b{font-weight:600}
+.feedmsg{padding:0 20px;color:var(--mute);font-size:13px;white-space:nowrap}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* home */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:60px 0 40px}
+.pill{display:inline-block;background:rgba(252,213,53,.12);color:var(--yt);border:1px solid rgba(252,213,53,.3);padding:5px 14px;border-radius:99px;font-size:12px;font-weight:600;margin-bottom:18px}
+h1{font-size:56px;line-height:1.05;font-weight:800;letter-spacing:-1.5px;margin-bottom:18px}
+h1 span{background:linear-gradient(135deg,var(--yt),#ff9d2f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mute);font-size:17px;max-width:520px;margin-bottom:28px}
+.lead b{color:var(--text)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.cta .btn{padding:14px 28px;font-size:15px}
+.glass{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.crow{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.crow:last-child{border:0}
+.crow:hover{background:var(--card2)}
+.cn{display:flex;align-items:center;gap:12px;font-weight:600}
+.dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;color:#000;flex-shrink:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0}
+.stat{text-align:center;padding:22px}
+.stat b{display:block;font-size:28px;font-weight:800;color:var(--yt)}
+.stat span{color:var(--mute);font-size:13px}
+.sec{margin:50px 0 18px;font-size:26px;font-weight:800;letter-spacing:-.5px}
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mv{cursor:pointer;transition:.2s}
+.mv:hover{transform:translateY(-3px);border-color:var(--y)}
+.mv .p{font-size:22px;font-weight:700;margin:6px 0 2px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step .n,.feat .n{width:40px;height:40px;border-radius:12px;background:rgba(252,213,53,.14);color:var(--yt);display:grid;place-items:center;font-weight:800;margin-bottom:12px;font-size:18px}
+.step h3,.feat h3{margin-bottom:6px}
+.step p,.feat p{color:var(--mute)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--mute);margin-top:8px}
+
+/* tables + forms */
+table{width:100%;border-collapse:collapse}
+th{color:var(--mute);font-weight:500;text-align:right;padding:10px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;white-space:nowrap}
+td{text-align:right;padding:14px 8px;border-top:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+tr.row{cursor:pointer;transition:.1s}tr.row:hover td{background:var(--card2)}
+tr.active td{background:rgba(252,213,53,.08)}
+.scroll{overflow-x:auto}
+.coin{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.coin .dot{width:28px;height:28px;font-size:10px}
+.star{color:var(--mute);cursor:pointer;margin-right:10px;font-size:17px;user-select:none}
+.star.on{color:var(--yt)}
+input,select{width:100%;padding:12px 14px;background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:12px;font-size:15px;font-family:inherit;outline:none;transition:.15s}
+input:focus,select:focus{border-color:var(--y)}
+input:disabled{opacity:.6}
+label{display:block;color:var(--mute);font-size:12px;margin:14px 0 6px;font-weight:500}
+
+/* trade + futures */
+.tgrid{display:grid;grid-template-columns:270px 1fr 330px;gap:14px;align-items:start}
+.fgrid{display:grid;grid-template-columns:1fr 340px;gap:14px;align-items:start}
+.ph{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.ph h2{margin:0}
+.pbig{font-size:30px;font-weight:800}
+.tabs{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}
+.tabs button{background:var(--card2);color:var(--mute);border:0;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600;font-size:12px}
+.tabs button.on{background:var(--y);color:#000}
+canvas{width:100%;height:340px;display:block}
+#pchart{height:200px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.ob div{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;font-variant-numeric:tabular-nums}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:6px}
+.seg button{border:0;background:transparent;color:var(--mute);padding:10px;border-radius:9px;font-weight:700;cursor:pointer;font-size:14px}
+.seg button.b.on{background:var(--g);color:#fff}
+.seg button.s.on{background:var(--r);color:#fff}
+.pcts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.pcts button{background:var(--card2);border:0;color:var(--text);padding:8px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600}
+.pcts button:hover{background:var(--line)}
+.submit{width:100%;margin-top:16px;padding:14px;border:0;border-radius:12px;font-weight:800;font-size:15px;color:#fff;cursor:pointer;transition:.15s}
+.submit.buy{background:var(--g)}.submit.sell{background:var(--r)}
+.submit:hover{filter:brightness(1.1)}
+.kv{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--mute);gap:10px}
+.kv b{color:var(--text);font-weight:600;text-align:right}
+.arow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13px;gap:8px}
+.x{cursor:pointer;color:var(--mute);padding:0 6px;font-size:16px}.x:hover{color:var(--r)}
+
+/* wallet / profile / settings */
+.big{font-size:40px;font-weight:800;letter-spacing:-1px}
+.bar2{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;min-width:80px;margin-left:auto}
+.bar2 i{display:block;height:100%;background:linear-gradient(90deg,var(--y),var(--y2))}
+.pro{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+.badge{display:inline-block;margin-top:6px;background:rgba(14,203,129,.12);color:var(--g);border:1px solid rgba(14,203,129,.3);padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600}
+.pstat .v{font-size:24px;font-weight:800;margin-top:4px}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{background:var(--card2);color:var(--text);border:1px solid var(--line);padding:9px 16px;border-radius:10px;cursor:pointer;font-weight:600;font-size:13px}
+.opts button.on{background:var(--y);color:#000;border-color:var(--y)}
+.danger{border-color:rgba(246,70,93,.45)}
+.learn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.learn .card p{color:var(--mute)}
+.headrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+
+footer{border-top:1px solid var(--line);margin-top:60px;padding:30px 20px;text-align:center;color:var(--mute);font-size:12px}
+footer .links{display:flex;gap:18px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
+footer .links a{cursor:pointer;color:var(--text)}
+footer .warn{max-width:700px;margin:8px auto 0}
+
+/* modals + toasts */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal.on{display:flex}
+.box{background:var(--card);border:1px solid var(--line);padding:28px;border-radius:22px;width:380px;max-width:100%;animation:fade .25s}
+.box h2{font-size:22px;margin-bottom:4px}
+.err{color:var(--r);font-size:13px;min-height:18px;margin-top:10px}
+.link{color:var(--yt);cursor:pointer;text-align:center;margin-top:14px;font-size:13px}
+#toasts{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--card2);color:var(--text);border:1px solid var(--line);border-left:4px solid var(--g);padding:12px 16px;border-radius:10px;font-weight:500;animation:fade .25s;max-width:320px}
+.toast.err{border-left-color:var(--r)}
+
+@media(max-width:1000px){
+  .hero,.tgrid,.fgrid,.two,.steps,.learn,.sgrid{grid-template-columns:1fr}
+  .stats,.cards4{grid-template-columns:1fr 1fr}
+  h1{font-size:38px}.hero{padding-top:30px}
+  .bar{gap:12px;padding:10px 14px;flex-wrap:wrap}
+  nav{order:3;flex-basis:100%}
+  #total{display:none}
+}
+@media(max-width:560px){
+  .hi{display:none}
+  .logo{font-size:18px}
+  .btn.sm{padding:7px 11px}
+  .stats,.cards4{grid-template-columns:1fr}
+  .box{padding:22px}
+  .big{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="logo" onclick="go('home')"><i>◆</i><span class="brand"></span></div>
+    <nav>
+      <a data-v="home">Home</a><a data-v="markets">Markets</a><a data-v="trade">Trade</a><a data-v="futures">Futures</a>
+      <a data-v="earn">Earn</a><a data-v="board">Leaderboard</a><a data-v="wallet">Wallet</a><a data-v="history">History</a><a data-v="learn">Learn</a>
+    </nav>
+    <div class="right">
+      <span id="total" class="mute"></span>
+      <div id="authArea"></div>
+    </div>
+  </div>
+  <div class="ticker"><div class="track" id="tick"></div></div>
+</header>
+
+<div class="wrap">
+
+<!-- HOME -->
+<section class="view" id="v-home">
+  <div class="hero">
+    <div id="heroLeft"></div>
+    <div class="glass" id="heroCard"></div>
+  </div>
+  <div class="stats">
+    <div class="card stat"><b>10,000</b><span>USDT starting balance</span></div>
+    <div class="card stat"><b>40+</b><span>Live crypto markets</span></div>
+    <div class="card stat"><b>50x</b><span>Futures leverage, risk free</span></div>
+    <div class="card stat"><b>$0</b><span>Real money at risk</span></div>
+  </div>
+
+  <div class="sec">Top movers today</div>
+  <div class="cards4" id="movers"></div>
+
+  <div class="sec">Why <span class="brand"></span>?</div>
+  <div class="cards4">
+    <div class="card feat"><div class="n">⚡</div><h3>Live prices</h3><p>Market prices refresh every few seconds with real charts and order books.</p></div>
+    <div class="card feat"><div class="n">📈</div><h3>Spot, limit and futures</h3><p>Practice market orders, limit orders and leveraged long or short positions.</p></div>
+    <div class="card feat"><div class="n">🏆</div><h3>Leaderboard</h3><p>Compete with other traders and climb the rankings by return.</p></div>
+    <div class="card feat"><div class="n">🔒</div><h3>Secure accounts</h3><p>Passwords are hashed, logins are rate limited, and every trade is checked on the server.</p></div>
+  </div>
+
+  <div class="sec">How it works</div>
+  <div class="steps">
+    <div class="card step"><div class="n">1</div><h3>Create an account</h3><p>Sign up with an email and receive 10,000 USDT in practice funds instantly.</p></div>
+    <div class="card step"><div class="n">2</div><h3>Pick a market</h3><p>Browse live prices, charts and the order book for popular coins.</p></div>
+    <div class="card step"><div class="n">3</div><h3>Trade and learn</h3><p>Place trades, set alerts, earn interest and track your portfolio over time.</p></div>
+  </div>
+
+  <div class="sec">Frequently asked questions</div>
+  <details><summary>Is this real money?</summary><p>No. Everything here uses virtual USDT. Prices are real, but nothing can be deposited or withdrawn.</p></details>
+  <details><summary>How do limit orders and liquidations work?</summary><p>Your funds are reserved when you place a limit order. Orders, alerts and liquidations are checked against live prices while you have the site open.</p></details>
+  <details><summary>Where do the prices come from?</summary><p>From public market data, refreshed every few seconds.</p></details>
+  <details><summary>Can I start over?</summary><p>Yes. Go to Settings and use Reset account to return to 10,000 USDT with a clean history.</p></details>
+</section>
+
+<!-- MARKETS -->
+<section class="view" id="v-markets">
+  <div class="card">
+    <div class="headrow">
+      <h2 style="margin:0">Markets</h2>
+      <input id="search" placeholder="Search coins…" oninput="renderMarkets()" style="max-width:260px">
+    </div>
+    <div class="tabs" id="mtabs" style="margin:14px 0 6px">
+      <button class="on" data-t="all" onclick="setTab('all')">All</button>
+      <button data-t="fav" onclick="setTab('fav')">★ Favourites</button>
+      <button data-t="up" onclick="setTab('up')">Gainers</button>
+      <button data-t="down" onclick="setTab('down')">Losers</button>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th onclick="sortBy('name')">Coin</th><th onclick="sortBy('price')">Price</th><th onclick="sortBy('chg')">24h change</th><th>24h high</th><th>24h low</th><th onclick="sortBy('vol')">Volume</th><th></th></tr></thead>
+      <tbody id="mRows"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- TRADE -->
+<section class="view" id="v-trade">
+  <div class="tgrid">
+    <div class="card" style="padding:14px;max-height:780px;overflow-y:auto"><h2>Markets</h2><table><tbody id="pairRows"></tbody></table></div>
+    <div>
+      <div class="card">
+        <div class="ph"><h2 id="pairTitle">BTC/USDT</h2><div id="price" class="pbig">--</div><div id="chg"></div></div>
+        <div class="tabs" id="ivl"></div>
+        <canvas id="chart"></canvas>
+      </div>
+      <div class="two">
+        <div class="card ob"><h2>Order book</h2><div id="asks"></div><div id="mid" class="pbig" style="font-size:20px;margin:8px 0"></div><div id="bids"></div></div>
+        <div class="card ob"><h2>Recent trades</h2><div id="trades"></div></div>
+      </div>
+      <div class="card" style="margin-top:14px"><h2>Open orders</h2><div class="scroll" id="ordersBox"></div>
+        <div class="note">Limit orders are checked against live prices while you have the site open.</div></div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="tabs" id="otype" style="margin-top:0">
+          <button class="on" data-t="market" onclick="setOType('market')">Market</button>
+          <button data-t="limit" onclick="setOType('limit')">Limit</button>
+        </div>
+        <div class="seg"><button class="b on" id="sb" onclick="setSide('buy')">Buy</button><button class="s" id="ss" onclick="setSide('sell')">Sell</button></div>
+        <div class="kv"><span>Available</span><b id="avail">--</b></div>
+        <div id="limRow" style="display:none"><label>Limit price (USDT)</label><input id="limit" type="number" min="0" step="any" oninput="updateCost()"></div>
+        <label>Quantity (<span id="coinName">BTC</span>)</label>
+        <input id="qty" type="number" min="0" step="any" placeholder="0.00" oninput="updateCost()">
+        <div class="pcts"><button onclick="pct(25)">25%</button><button onclick="pct(50)">50%</button><button onclick="pct(75)">75%</button><button onclick="pct(100)">100%</button></div>
+        <div class="kv" style="margin-top:16px"><span>Total</span><b id="cost">0 USDT</b></div>
+        <div class="kv"><span>Fee (0.1%)</span><b id="fee">0 USDT</b></div>
+        <button class="submit buy" id="go" onclick="trade()">Buy BTC</button>
+      </div>
+      <div class="card" style="margin-top:14px"><h2>Price alerts</h2>
+        <div class="seg"><button class="b on" id="adA" onclick="setAdir('above')">Above</button><button class="s" id="adB" onclick="setAdir('below')">Below</button></div>
+        <label>Alert price (USDT)</label><input id="aPrice" type="number" min="0" step="any" placeholder="e.g. 105000">
+        <button class="btn" style="width:100%;margin-top:12px" onclick="addAlert()">Alert me for <span id="aCoin">BTC</span></button>
+        <div id="alertsBox" style="margin-top:14px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURES -->
+<section class="view" id="v-futures">
+  <div class="pagetitle">Futures</div>
+  <div class="fgrid">
+    <div class="card"><h2>Open positions</h2>
+      <div class="scroll"><table>
+        <thead><tr><th>Pair</th><th>Side</th><th>Size</th><th>Entry</th><th>Mark</th><th>Liq. price</th><th>Margin</th><th>PnL</th><th></th></tr></thead>
+        <tbody id="posRows"></tbody>
+      </table></div>
+      <div class="note">Futures use the live spot price as the mark price. A position is liquidated when you lose 90% of its margin. Liquidation is checked while you have the site open.</div>
+    </div>
+    <div class="card"><h2>Open a position</h2>
+      <label style="margin-top:0">Pair</label><select id="fcoin" onchange="updFut()"></select>
+      <div class="seg" style="margin-top:14px"><button class="b on" id="fl" onclick="setFside('long')">Long</button><button class="s" id="fs" onclick="setFside('short')">Short</button></div>
+      <label>Leverage</label><div class="opts" id="flev"></div>
+      <label>Margin (USDT, min 10)</label><input id="fmargin" type="number" step="any" min="10" oninput="updFut()" placeholder="100">
+      <div class="kv" style="margin-top:14px"><span>Available</span><b id="favail">--</b></div>
+      <div class="kv"><span>Entry price</span><b id="fentry">--</b></div>
+      <div class="kv"><span>Position size</span><b id="fsize">--</b></div>
+      <div class="kv"><span>Liquidation price</span><b id="fliq">--</b></div>
+      <button class="submit buy" id="fgo" onclick="openFut()">Open long</button>
+    </div>
+  </div>
+</section>
+
+<!-- EARN -->
+<section class="view" id="v-earn">
+  <div class="pagetitle">Earn</div>
+  <div class="sgrid">
+    <div class="card"><h2>Flexible savings</h2>
+      <table><thead><tr><th>Coin</th><th>APY</th><th>Available</th><th></th></tr></thead><tbody id="earnProducts"></tbody></table>
+      <div class="note">Demo interest rates. Interest builds up in real time and you can redeem at any time.</div>
+    </div>
+    <div class="card"><h2>My subscriptions</h2>
+      <div class="scroll"><table><thead><tr><th>Coin</th><th>Amount</th><th>Interest</th><th>APY</th><th></th></tr></thead><tbody id="earnRows"></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section class="view" id="v-board">
+  <div class="pagetitle">Leaderboard</div>
+  <div class="card">
+    <p class="mute" style="margin-bottom:10px">Ranked by return since the 10,000 USDT start. Only first names are shown, and you can hide yourself in Settings. Rankings update every few minutes.</p>
+    <div class="scroll"><table><thead><tr><th>Rank</th><th>Trader</th><th>Portfolio</th><th>Return</th></tr></thead><tbody id="boardRows"></tbody></table></div>
+  </div>
+</section>
+
+<!-- WALLET -->
+<section class="view" id="v-wallet"><div id="walletBox"></div></section>
+
+<!-- HISTORY -->
+<section class="view" id="v-history">
+  <div class="card">
+    <div class="headrow"><h2 style="margin:0">History</h2><button class="btn ghost sm" onclick="exportCSV()">⬇ Download CSV</button></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Time</th><th>Type</th><th>Side</th><th>Coin</th><th>Quantity</th><th>Price (USDT)</th><th>Fee (USDT)</th><th>Note</th></tr></thead>
+      <tbody id="histRows"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="view" id="v-profile"><div id="profileBox"></div></section>
+
+<!-- SETTINGS -->
+<section class="view" id="v-settings"><div id="settingsBox"></div></section>
+
+<!-- LEARN -->
+<section class="view" id="v-learn">
+  <div class="sec" style="margin-top:10px">Learn the basics</div>
+  <div class="learn">
+    <div class="card"><h2>What is a spot trade?</h2><p>You buy or sell the actual coin at the current price. Buy 1 ETH and you own 1 ETH.</p></div>
+    <div class="card"><h2>What is a limit order?</h2><p>An order that waits until the price reaches a level you choose, instead of trading right now.</p></div>
+    <div class="card"><h2>What are futures?</h2><p>Contracts that let you bet on a price going up (long) or down (short), often with leverage that multiplies gains and losses.</p></div>
+    <div class="card"><h2>What is liquidation?</h2><p>When losses on a leveraged position use up most of your margin, the position is closed automatically.</p></div>
+    <div class="card"><h2>What is APY?</h2><p>Annual percentage yield: the yearly return you earn on savings.</p></div>
+    <div class="card"><h2>What is an order book?</h2><p>A live list of buy orders (bids) and sell orders (asks). Trades happen where they meet.</p></div>
+    <div class="card"><h2>What is a candlestick?</h2><p>Each candle shows the open, high, low and close for a time period. Green means the price rose, red means it fell.</p></div>
+    <div class="card"><h2>What is a trading fee?</h2><p>A small percentage the exchange charges on each trade. Here it is 0.1%.</p></div>
+    <div class="card"><h2>Staying safe</h2><p>Never share passwords or seed phrases. Be careful with promises of guaranteed returns, and only trade money you can afford to lose.</p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="links">
+    <a onclick="go('markets')">Markets</a><a onclick="go('trade')">Trade</a><a onclick="go('futures')">Futures</a><a onclick="go('learn')">Learn</a><a onclick="go('settings')">Settings</a>
+  </div>
+  <b class="brand"></b> is a practice platform that uses live market prices with virtual money.
+  <div class="warn">No real funds can be deposited, withdrawn or traded here. This is not financial advice, and it is not affiliated with any real exchange.</div>
+</footer>
+
+<!-- login / signup -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeAuth()">
+  <div class="box">
+    <h2 id="mTitle">Log in</h2>
+    <p class="mute" id="mSub"></p>
+    <div id="nameRow"><label>Your name</label><input id="nm" type="text" autocomplete="given-name" placeholder="e.g. Kevin" maxlength="30"></div>
+    <label>Email</label><input id="em" type="email" autocomplete="email" placeholder="you@example.com">
+    <label>Password</label><input id="pw" type="password" autocomplete="current-password" placeholder="At least 8 characters">
+    <div class="err" id="amsg"></div>
+    <button class="btn" style="width:100%;margin-top:14px;padding:13px" onclick="submitAuth()">Continue</button>
+    <div class="link" id="mSwitch" onclick="toggleMode()"></div>
+  </div>
+</div>
+
+<!-- general dialog -->
+<div class="modal" id="dlg" onclick="if(event.target===this)closeDlg()">
+  <div class="box">
+    <h2 id="dT"></h2>
+    <p class="mute" id="dS"></p>
+    <div id="dF"></div>
+    <div class="err" id="dErr"></div>
+    <button class="btn" style="width:100%;margin-top:14px;padding:13px" id="dOk">Confirm</button>
+  </div>
+</div>
+<div id="toasts"></div>
+
+<script>
+const BRAND='BinancePro';
+const BIN='https://data-api.binance.vision/api/v3';
+const COINS=['BTC','ETH','BNB','SOL','XRP','DOGE','ADA','TRX','AVAX','LINK','DOT','LTC','BCH','ATOM','UNI','NEAR','APT','ARB','OP','FIL','ETC','XLM','HBAR','ICP','AAVE','INJ','SUI','TON','SHIB','PEPE','FET','RUNE','MKR','ALGO','VET','SAND','MANA','AXS','GRT','CRV'];
+const COLORS={BTC:'#f7931a',ETH:'#8c9eff',BNB:'#fcd535',SOL:'#14f195',XRP:'#9aa5b1',DOGE:'#c2a633',ADA:'#4f8bff',TRX:'#ff4d4d',AVAX:'#e84142',LINK:'#4a7cff',DOT:'#e6007a',LTC:'#b8b8b8',USDT:'#26a17b'};
+const SYM={USD:'$',NGN:'₦',EUR:'€',GBP:'£'};
+const DEF={theme:'dark',cur:'USD',rate:{NGN:1500,EUR:0.92,GBP:0.79},ivl:'15m',coin:'BTC'};
+const LEVS=[2,5,10,20,50];
+const START=10000,YEAR=365*24*3600*1000;
+
+function loadJ(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
+let prefs=Object.assign({},DEF,loadJ('prefs',{}));
+prefs.rate=Object.assign({},DEF.rate,prefs.rate||{});
+if(!COINS.includes(prefs.coin))prefs.coin='BTC';
+let favs=loadJ('favs',[]);
+let tickers=loadJ('snap',{});
+let selected=prefs.coin,ivl=prefs.ivl,sortKey='vol',sortDir=-1,side='buy',otype='market',mode='login',mtab='all',fside='long',flev=10,adir='above';
+let bal={},hist=[],orders=[],positions=[],earn=[],alerts=[],snaps=[],board=[],apy={USDT:5,BTC:1.5,ETH:2.5,BNB:3,SOL:4,XRP:2};
+let hideBoard=false,feedErr=false,menuOpen=false,kc={},dlgRun=null;
+let token=localStorage.getItem('token'),email=localStorage.getItem('email'),name=localStorage.getItem('name'),created=localStorage.getItem('created');
+
+document.title=BRAND+' – Trade Crypto Risk-Free';
+document.querySelectorAll('.brand').forEach(e=>e.textContent=BRAND);
+
+/* ---------- helpers ---------- */
+const $=id=>document.getElementById(id);
+function setH(id,h){const e=$(id);if(e&&e._h!==h){e.innerHTML=h;e._h=h}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmt(n){n=Number(n);return n>=1?n.toLocaleString(undefined,{maximumFractionDigits:2}):n.toPrecision(4)}
+function q6(n){return Number(Number(n).toPrecision(6))}
+function R(){return prefs.cur==='USD'?1:(Number(prefs.rate[prefs.cur])||1)}
+function P(n){return SYM[prefs.cur]+fmt(Number(n)*R())}
+function usd(n){return SYM[prefs.cur]+(Number(n)*R()).toLocaleString(undefined,{maximumFractionDigits:2})}
+function sgn(n){return (n<0?'-':'+')+usd(Math.abs(n))}
+function U(n){return Number(n).toLocaleString(undefined,{maximumFractionDigits:2})+' USDT'}
+function px(c){return c==='USDT'?1:(tickers[c]?parseFloat(tickers[c].lastPrice):0)}
+function chg(c){return tickers[c]?parseFloat(tickers[c].priceChangePercent):0}
+function dotColor(c){
+  if(COLORS[c])return COLORS[c];
+  let h=0;for(const ch of c)h=(h*31+ch.charCodeAt(0))%360;
+  return `hsl(${h} 70% 60%)`;
+}
+function dot(c){return `<span class="dot" style="background:${dotColor(c)}">${c.slice(0,3)}</span>`}
+function chgTxt(v){return `<span class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(2)}%</span>`}
+function displayName(){
+  const n=(name||(email?email.split('@')[0]:'')||'Trader').trim();
+  return n.charAt(0).toUpperCase()+n.slice(1);
+}
+function firstName(){return displayName().split(' ')[0]}
+function toast(msg,ok=true){
+  const t=document.createElement('div');t.className='toast'+(ok?'':' err');t.textContent=msg;
+  $('toasts').appendChild(t);setTimeout(()=>t.remove(),4200);
+}
+function savePrefs(){localStorage.setItem('prefs',JSON.stringify(prefs))}
+function applyTheme(){document.documentElement.setAttribute('data-theme',prefs.theme==='light'?'light':'dark')}
+function emptyLogin(t){return `<div class="card empty"><h2>${t}</h2>Log in to see this page.<br><button class="btn" onclick="openAuth('login')">Log in</button></div>`}
+function cssv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+function sk(n,h){return Array.from({length:n},()=>`<div class="sk" style="height:${h||44}px;margin-bottom:10px"></div>`).join('')}
+function loading(){return !Object.keys(tickers).length&&!feedErr}
+
+/* account maths (mirrors the server, used for live display) */
+function pnl(p){return (p.side==='long'?px(p.coin)-p.entry:p.entry-px(p.coin))*p.size}
+function accr(e){return e.amt*(e.apy/100)*(Date.now()-e.t)/YEAR}
+function liqPrice(p){return p.side==='long'?p.entry*(1-0.9/p.lev):p.entry*(1+0.9/p.lev)}
+function lockedOrders(){return orders.reduce((s,o)=>s+(o.side==='buy'?o.reserved:o.reserved*px(o.coin)),0)}
+function lockedFut(){return positions.reduce((s,p)=>s+p.margin+pnl(p),0)}
+function lockedEarn(){return earn.reduce((s,e)=>s+(e.amt+accr(e))*px(e.coin),0)}
+function equity(){let t=0;Object.keys(bal).forEach(c=>t+=bal[c]*px(c));return t+lockedOrders()+lockedFut()+lockedEarn()}
+
+/* ---------- network ---------- */
+async function jget(url,ms=5000){
+  const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);
+  try{const r=await fetch(url,{signal:c.signal});if(!r.ok)throw new Error('HTTP '+r.status);return await r.json()}
+  finally{clearTimeout(t)}
+}
+async function rawApi(path,body,pub){
+  const headers={'Content-Type':'application/json'};
+  if(token&&!pub)headers.Authorization='Bearer '+token;
+  const res=await fetch('/api/'+path,{method:body?'POST':'GET',headers,body:body?JSON.stringify(body):undefined});
+  let data={};try{data=await res.json()}catch(e){}
+  if(res.status===401&&token&&!pub&&path!=='login'){logout(true)}
+  if(!res.ok)throw new Error(data.error||'Something went wrong');
+  return data;
+}
+// Logged-in requests run one at a time so they can never overwrite each other
+let chain=Promise.resolve();
+function api(path,body){
+  const pub=/^(market|klines|book|leaderboard)/.test(path);
+  if(pub)return rawApi(path,body,true);
+  const r=chain.then(()=>rawApi(path,body,false));
+  chain=r.catch(()=>{});
+  return r;
+}
+async function run(path,body,msg){
+  try{const r=await api(path,body);await refreshUser();renderAll();if(msg)toast(msg);return r}
+  catch(e){toast(e.message,false)}
+}
+
+/* ---------- auth ---------- */
+function openAuth(m){mode=m;renderModal();$('amsg').textContent='';$('modal').classList.add('on');setTimeout(()=>$(m==='register'?'nm':'em').focus(),50)}
+function closeAuth(){$('modal').classList.remove('on')}
+function toggleMode(){mode=mode==='login'?'register':'login';renderModal()}
+function renderModal(){
+  $('mTitle').textContent=mode==='login'?'Welcome back':'Create your account';
+  $('mSub').textContent=mode==='login'?'Log in to continue trading.':'Get 10,000 USDT in practice funds.';
+  $('mSwitch').textContent=mode==='login'?"New here? Create an account":"Already have an account? Log in";
+  $('nameRow').style.display=mode==='register'?'block':'none';
+}
+async function submitAuth(){
+  $('amsg').textContent='';
+  const nm=$('nm').value.trim();
+  if(mode==='register'&&!nm){$('amsg').textContent='Please enter your name.';return}
+  try{
+    const payload={email:$('em').value,password:$('pw').value};
+    if(mode==='register')payload.name=nm;
+    const d=await api(mode,payload);
+    token=d.token;email=$('em').value.trim().toLowerCase();name=d.name||nm||'';
+    localStorage.setItem('token',token);localStorage.setItem('email',email);localStorage.setItem('name',name);
+    $('pw').value='';closeAuth();
+    toast(mode==='register'?`Welcome to ${BRAND}, ${firstName()}! You have 10,000 USDT.`:`Welcome back, ${firstName()}!`);
+    await refreshUser();renderAll();renderSettings();
+  }catch(e){$('amsg').textContent=e.message}
+}
+function logout(silent){
+  token=null;email=null;name=null;created=null;menuOpen=false;
+  bal={};hist=[];orders=[];positions=[];earn=[];alerts=[];snaps=[];
+  ['token','email','name','created'].forEach(k=>localStorage.removeItem(k));
+  renderAll();renderSettings();
+  if(silent){toast('Session expired, please log in again.',false);openAuth('login')}
+  else{toast('You have been logged out.');go('home')}
+}
+function showEvent(ev){
+  if(ev.kind==='order')toast(`Limit order filled: ${ev.side} ${q6(ev.qty)} ${ev.coin} at ${fmt(ev.price)} USDT`);
+  else if(ev.kind==='liq')toast(`Position liquidated: ${ev.side} ${ev.coin}`,false);
+  else if(ev.kind==='alert')toast(`🔔 ${ev.coin} is ${ev.dir} ${fmt(ev.target)} USDT (now ${fmt(ev.price)})`);
+}
+async function refreshUser(){
+  if(!token)return;
+  try{
+    const s=await api('state');
+    bal={};s.wallet.forEach(r=>bal[r.coin]=r.amount);
+    hist=s.history;orders=s.orders;positions=s.positions;earn=s.earn;alerts=s.alerts;snaps=s.snaps;apy=s.apy||apy;
+    name=s.me.name;created=s.me.created;hideBoard=!!s.me.hideBoard;
+    localStorage.setItem('name',name);if(created)localStorage.setItem('created',created);
+    (s.events||[]).forEach(showEvent);
+  }catch(e){}
+}
+['nm','em','pw'].forEach(i=>$(i).addEventListener('keydown',e=>{if(e.key==='Enter')submitAuth()}));
+
+/* ---------- general dialog ---------- */
+function openDlg(o){
+  $('dT').textContent=o.title;$('dS').textContent=o.sub||'';$('dErr').textContent='';$('dOk').textContent=o.ok||'Confirm';
+  $('dF').innerHTML=o.fields.map(f=>`<label>${f.label}</label><input id="d_${f.id}" type="${f.type||'text'}" step="any" value="${esc(f.value||'')}" placeholder="${esc(f.ph||'')}">`).join('');
+  dlgRun=o.run;$('dlg').classList.add('on');
+  setTimeout(()=>{const i=$('dF').querySelector('input');if(i)i.focus()},50);
+}
+function closeDlg(){$('dlg').classList.remove('on')}
+$('dOk').onclick=async()=>{
+  const v={};document.querySelectorAll('#dF input').forEach(i=>v[i.id.slice(2)]=i.value);
+  try{await dlgRun(v);closeDlg()}catch(e){$('dErr').textContent=e.message}
+};
+$('dF').addEventListener('keydown',e=>{if(e.key==='Enter')$('dOk').click()});
+
+/* ---------- avatar menu ---------- */
+function toggleMenu(e){e.stopPropagation();menuOpen=!menuOpen;const m=$('menu');if(m)m.classList.toggle('on',menuOpen)}
+function goM(v){menuOpen=false;go(v);renderAuth()}
+document.addEventListener('click',()=>{if(menuOpen){menuOpen=false;const m=$('menu');if(m)m.classList.remove('on')}});
+
+/* ---------- routing ---------- */
+function go(v){if(location.hash==='#'+v)route();else location.hash=v}
+function route(){
+  const v=(location.hash||'#home').slice(1);
+  const ok=$('v-'+v)?v:'home';
+  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+ok));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===ok));
+  window.scrollTo(0,0);renderAll();
+  if(ok==='settings')renderSettings();
+  if(ok==='futures'){$('fcoin').value=selected;updFut()}
+  if(ok==='board')loadBoard();
+  if(ok==='trade'){drawChart();loadBook()}
+  if(['wallet','history','profile','futures','earn'].includes(ok))refreshUser().then(renderAll);
+}
+document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>go(a.dataset.v));
+window.addEventListener('hashchange',route);
+
+/* ---------- market data (browser and server race, fastest wins) ---------- */
+async function direct24(){
+  const s=encodeURIComponent(JSON.stringify(COINS.map(c=>c+'USDT')));
+  return {list:await jget(`${BIN}/ticker/24hr?symbols=${s}`,5000)};
+}
+async function fetchTickers(){
+  try{
+    const d=await Promise.any([direct24(),api('market')]);
+    d.list.forEach(t=>tickers[t.symbol.replace('USDT','')]=t);
+    feedErr=false;
+    try{localStorage.setItem('snap',JSON.stringify(tickers))}catch(e){}
+    renderAll();
+  }catch(e){feedErr=true;renderAll()}
+}
+
+/* ---------- render ---------- */
+function renderAll(){
+  renderAuth();renderTicker();renderHero();renderHome();renderMarkets();renderPairs();renderPrice();
+  renderOrders();renderAlerts();renderFutures();renderEarn();renderWallet();renderHistory();renderProfile();renderPanel();
+}
+function renderAuth(){
+  if(token){
+    setH('authArea',`<div class="user" onclick="toggleMenu(event)"><span class="av">${esc(firstName().charAt(0).toUpperCase())}</span><span class="hi">Hello, <b>${esc(firstName())}</b></span><span class="caret">▾</span></div>
+    <div class="menu ${menuOpen?'on':''}" id="menu" onclick="event.stopPropagation()">
+      <div class="mh"><b>${esc(displayName())}</b><span>${esc(email||'')}</span></div>
+      <a onclick="goM('profile')">👤 Profile</a><a onclick="goM('wallet')">💼 Wallet</a><a onclick="goM('history')">🧾 History</a><a onclick="goM('settings')">⚙️ Settings</a>
+      <a class="out" onclick="logout()">Log out</a></div>`);
+  }else{
+    setH('authArea',`<button class="btn ghost sm" onclick="openAuth('login')">Log in</button><button class="btn sm" onclick="openAuth('register')">Sign up</button>`);
+  }
+}
+function renderTicker(){
+  const list=COINS.filter(c=>tickers[c]);
+  const tk=$('tick');
+  if(!list.length){
+    tk.style.animation='none';
+    setH('tick',`<div class="feedmsg">${feedErr?'Prices are temporarily unavailable. Retrying…':'Loading prices…'}</div>`);
+    return;
+  }
+  tk.style.animation='';
+  const h=list.map(c=>`<div class="tk"><b>${c}/USDT</b><span>${P(px(c))}</span>${chgTxt(chg(c))}</div>`).join('');
+  setH('tick',h+h);
+}
+function renderHero(){
+  if(token){
+    setH('heroLeft',`<span class="pill">● Welcome back</span>
+      <h1>Hello, <span>${esc(firstName())}</span> 👋</h1>
+      <p class="lead">Your portfolio is worth <b>${usd(equity())}</b>. Pick a market and make your next move.</p>
+      <div class="cta"><button class="btn" onclick="go('trade')">Start trading</button><button class="btn ghost" onclick="go('profile')">View profile</button></div>`);
+  }else{
+    setH('heroLeft',`<span class="pill">● Live market prices · Virtual money</span>
+      <h1>Learn to trade crypto <span>without the risk</span></h1>
+      <p class="lead">Get 10,000 USDT in practice funds, trade real market prices, and build your skills before you ever risk real money.</p>
+      <div class="cta"><button class="btn" onclick="openAuth('register')">Create free account</button><button class="btn ghost" onclick="go('markets')">Explore markets</button></div>`);
+  }
+}
+function renderHome(){
+  if(loading()){
+    setH('heroCard','<h2>Popular coins</h2>'+sk(5));
+    setH('movers',[1,2,3,4].map(()=>`<div class="card">${sk(1,16)}${sk(1,30)}</div>`).join(''));
+    return;
+  }
+  setH('heroCard','<h2>Popular coins</h2>'+COINS.slice(0,5).filter(c=>tickers[c]).map(c=>
+    `<div class="crow" onclick="pick('${c}')"><div class="cn">${dot(c)}<div>${c}<div class="mute" style="font-size:12px;font-weight:400">${c}/USDT</div></div></div><div style="text-align:right"><b>${P(px(c))}</b><div>${chgTxt(chg(c))}</div></div></div>`).join(''));
+  const top=COINS.filter(c=>tickers[c]).sort((a,b)=>chg(b)-chg(a)).slice(0,4);
+  setH('movers',top.map(c=>`<div class="card mv" onclick="pick('${c}')"><div class="coin">${dot(c)}${c}</div><div class="p">${P(px(c))}</div>${chgTxt(chg(c))}</div>`).join(''));
+}
+function setTab(t){mtab=t;document.querySelectorAll('#mtabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));renderMarkets()}
+function toggleFav(c,ev){
+  ev.stopPropagation();
+  favs=favs.includes(c)?favs.filter(x=>x!==c):favs.concat(c);
+  localStorage.setItem('favs',JSON.stringify(favs));renderMarkets();
+}
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1}renderMarkets()}
+function renderMarkets(){
+  if(loading()){setH('mRows',`<tr><td colspan="7">${sk(8,40)}</td></tr>`);return}
+  const q=($('search').value||'').toUpperCase();
+  const val=c=>{const t=tickers[c];return sortKey==='name'?c:sortKey==='price'?+t.lastPrice:sortKey==='chg'?+t.priceChangePercent:+t.quoteVolume};
+  let list=COINS.filter(c=>tickers[c]&&c.includes(q));
+  if(mtab==='fav')list=list.filter(c=>favs.includes(c));
+  if(mtab==='up')list=list.filter(c=>chg(c)>=0);
+  if(mtab==='down')list=list.filter(c=>chg(c)<0);
+  list.sort((a,b)=>{const x=val(a),y=val(b);return(x>y?1:x<y?-1:0)*sortDir});
+  if(!list.length){
+    setH('mRows',`<tr><td colspan="7" class="mute" style="text-align:center;padding:30px">${mtab==='fav'?'No favourites yet. Tap the ★ next to a coin to add it.':(Object.keys(tickers).length?'No coins match.':'Prices are unavailable right now.')}</td></tr>`);
+    return;
+  }
+  setH('mRows',list.map(c=>{const t=tickers[c];
+    return `<tr class="row" onclick="pick('${c}')"><td><span class="star ${favs.includes(c)?'on':''}" onclick="toggleFav('${c}',event)">★</span><span class="coin">${dot(c)}${c}</span></td><td>${P(t.lastPrice)}</td><td>${chgTxt(chg(c))}</td><td>${P(t.highPrice)}</td><td>${P(t.lowPrice)}</td><td>${SYM[prefs.cur]}${(t.quoteVolume*R()/1e6).toFixed(1)}M</td><td><button class="btn sm">Trade</button></td></tr>`}).join(''));
+}
+function renderPairs(){
+  if(loading()){setH('pairRows',`<tr><td>${sk(8,34)}</td></tr>`);return}
+  setH('pairRows',COINS.filter(c=>tickers[c]).map(c=>
+    `<tr class="row ${c===selected?'active':''}" onclick="pick('${c}')"><td style="padding:10px 6px"><span class="coin">${dot(c)}${c}</span></td><td style="padding:10px 6px">${P(px(c))}</td><td style="padding:10px 6px">${chgTxt(chg(c))}</td></tr>`).join(''));
+}
+function renderPrice(){
+  $('pairTitle').textContent=selected+'/USDT';$('coinName').textContent=selected;$('aCoin').textContent=selected;
+  if(!tickers[selected]){$('price').textContent=feedErr?'Unavailable':'--';return}
+  const v=chg(selected);
+  $('price').textContent=P(px(selected));$('price').className='pbig '+(v>=0?'up':'down');
+  $('chg').innerHTML=chgTxt(v);
+}
+
+/* ---------- wallet, history, profile ---------- */
+function renderWallet(){
+  if(!token){setH('walletBox',emptyLogin('Your wallet'));$('total').textContent='';return}
+  const tot=equity(),avail=Object.keys(bal).reduce((s,c)=>s+bal[c]*px(c),0);
+  const rows=Object.keys(bal).sort((a,b)=>bal[b]*px(b)-bal[a]*px(a)).map(c=>{
+    const v=bal[c]*px(c),p=tot?v/tot*100:0;
+    return `<tr><td><span class="coin">${dot(c)}${c}</span></td><td>${c==='USDT'?bal[c].toFixed(2):q6(bal[c])}</td><td>${P(px(c))}</td><td>${usd(v)}</td><td style="min-width:130px"><div style="display:flex;align-items:center;gap:8px"><span>${p.toFixed(1)}%</span><div class="bar2" style="flex:1"><i style="width:${p}%"></i></div></div></td></tr>`}).join('');
+  setH('walletBox',`<div class="card" style="margin-bottom:14px"><div class="mute">Hello, ${esc(firstName())} 👋 Your total balance</div><div class="big">${usd(tot)}</div><div class="mute" style="margin-top:4px">${esc(email||'')}</div></div>
+  <div class="cards4" style="margin-bottom:14px">
+    <div class="card pstat"><div class="mute">Available</div><div class="v">${usd(avail)}</div></div>
+    <div class="card pstat"><div class="mute">In open orders</div><div class="v">${usd(lockedOrders())}</div></div>
+    <div class="card pstat"><div class="mute">In futures</div><div class="v">${usd(lockedFut())}</div></div>
+    <div class="card pstat"><div class="mute">In Earn</div><div class="v">${usd(lockedEarn())}</div></div>
+  </div>
+  <div class="card"><h2>Assets</h2><div class="scroll"><table><thead><tr><th>Coin</th><th>Amount</th><th>Price</th><th>Value</th><th>Allocation</th></tr></thead><tbody>${rows}</tbody></table></div></div>`);
+  $('total').textContent='Balance: '+usd(tot);
+}
+function sideCls(s){return (s==='buy'||s==='long')?'up':(s==='sell'||s==='short'||s==='liquidated')?'down':''}
+function renderHistory(){
+  if(!token){setH('histRows','<tr><td colspan="8" class="mute" style="text-align:center;padding:30px">Log in to see your history.</td></tr>');return}
+  setH('histRows',hist.slice(0,100).map(t=>`<tr><td>${esc(t.time)}</td><td>${t.type||'spot'}</td><td class="${sideCls(t.side)}">${esc(String(t.side).toUpperCase())}</td><td>${t.coin}</td><td>${q6(t.qty)}</td><td>${t.price?fmt(t.price):'-'}</td><td>${Number(t.fee).toFixed(4)}</td><td class="mute">${esc(t.note||'')}</td></tr>`).join('')
+    ||'<tr><td colspan="8" class="mute" style="text-align:center;padding:30px">Nothing here yet. Make your first trade!</td></tr>');
+}
+function exportCSV(){
+  if(!hist.length)return toast('No history to export yet.',false);
+  const rows=[['Time','Type','Side','Coin','Quantity','Price (USDT)','Fee (USDT)','Note']].concat(hist.map(t=>[t.time,t.type||'spot',t.side,t.coin,t.qty,t.price,t.fee,t.note||'']));
+  const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='trade-history.csv';
+  document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);
+}
+function renderProfile(){
+  if(!token){setH('profileBox',emptyLogin('Your profile'));return}
+  const tot=equity(),pl=tot-START,fees=hist.reduce((s,t)=>s+(+t.fee||0),0);
+  const trades=hist.filter(t=>['spot','limit'].includes(t.type||'spot'));
+  const counts={};trades.forEach(t=>counts[t.coin]=(counts[t.coin]||0)+1);
+  const fav=Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0]||'None yet';
+  const buys=trades.filter(t=>t.side==='buy').length;
+  const futs=hist.filter(t=>t.type==='futures'&&(t.side==='long'||t.side==='short')).length;
+  const since=created?new Date(created).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}):'Not recorded';
+  const recent=hist.slice(0,5).map(t=>`<tr><td>${esc(t.time)}</td><td>${t.type||'spot'}</td><td class="${sideCls(t.side)}">${esc(String(t.side).toUpperCase())}</td><td>${t.coin}</td><td>${q6(t.qty)}</td></tr>`).join('')
+    ||'<tr><td colspan="5" class="mute" style="text-align:center;padding:24px">No activity yet.</td></tr>';
+  setH('profileBox',`
+  <div class="card pro">
+    <span class="av lg">${esc(firstName().charAt(0).toUpperCase())}</span>
+    <div><h2 style="margin:0">${esc(displayName())}</h2><div class="mute">${esc(email||'')}</div><div class="mute">Member since ${since}</div><span class="badge">Practice account</span></div>
+    <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost sm" onclick="go('settings')">Edit profile</button><button class="btn sm" onclick="go('trade')">Start trading</button></div>
+  </div>
+  <div class="cards4" style="margin-bottom:14px">
+    <div class="card pstat"><div class="mute">Portfolio value</div><div class="v">${usd(tot)}</div></div>
+    <div class="card pstat"><div class="mute">Profit / loss</div><div class="v ${pl>=0?'up':'down'}">${sgn(pl)}</div></div>
+    <div class="card pstat"><div class="mute">Spot and limit trades</div><div class="v">${trades.length}</div></div>
+    <div class="card pstat"><div class="mute">Fees paid</div><div class="v">${usd(fees)}</div></div>
+  </div>
+  <div class="card" style="margin-bottom:14px"><h2>Portfolio value over time</h2><canvas id="pchart"></canvas></div>
+  <div class="sgrid">
+    <div class="card"><h2>Trading summary</h2>
+      <div class="kv"><span>Starting balance</span><b>${usd(START)}</b></div>
+      <div class="kv"><span>Buy orders</span><b>${buys}</b></div>
+      <div class="kv"><span>Sell orders</span><b>${trades.length-buys}</b></div>
+      <div class="kv"><span>Futures positions opened</span><b>${futs}</b></div>
+      <div class="kv"><span>Most traded coin</span><b>${fav}</b></div>
+      <div class="kv"><span>Favourite coins</span><b>${favs.length?favs.join(', '):'None yet'}</b></div>
+    </div>
+    <div class="card"><h2>Recent activity</h2><div class="scroll"><table><thead><tr><th>Time</th><th>Type</th><th>Side</th><th>Coin</th><th>Qty</th></tr></thead><tbody>${recent}</tbody></table></div></div>
+  </div>`);
+  drawPortfolio();
+}
+function drawPortfolio(){
+  const cv=$('pchart');if(!cv||!cv.clientWidth)return;
+  const d=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
+  cv.width=W*d;cv.height=H*d;
+  const x=cv.getContext('2d');x.setTransform(d,0,0,d,0,0);x.font='12px Inter,Arial';
+  const pts=snaps.map(s=>({t:s.t,v:s.v})),e=equity();
+  if(Number.isFinite(e)&&e>0&&Object.keys(tickers).length)pts.push({t:Date.now(),v:e});
+  if(pts.length<2){x.fillStyle=cssv('--mute');x.fillText('Your portfolio chart appears after a few minutes of activity.',12,32);return}
+  const vs=pts.map(p=>p.v),hi=Math.max(...vs),lo=Math.min(...vs),pad=((hi-lo)||hi*0.01)*0.2,top=hi+pad,bot=lo-pad;
+  const t0=pts[0].t,span=(pts[pts.length-1].t-t0)||1,RP=80;
+  const X=t=>6+(t-t0)/span*(W-RP-6),Y=v=>8+(top-v)/(top-bot)*(H-16);
+  const col=pts[pts.length-1].v>=pts[0].v?'#0ecb81':'#f6465d';
+  x.textAlign='right';
+  for(let i=0;i<4;i++){const v=bot+(top-bot)*i/3,yy=Y(v);
+    x.strokeStyle=cssv('--line');x.beginPath();x.moveTo(0,yy);x.lineTo(W-RP+6,yy);x.stroke();
+    x.fillStyle=cssv('--mute');x.fillText(usd(v),W-4,yy+4)}
+  x.beginPath();pts.forEach((p,i)=>i?x.lineTo(X(p.t),Y(p.v)):x.moveTo(X(p.t),Y(p.v)));
+  x.strokeStyle=col;x.lineWidth=2;x.stroke();
+  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,col+'44');g.addColorStop(1,col+'00');
+  x.lineTo(X(pts[pts.length-1].t),H);x.lineTo(X(t0),H);x.closePath();x.fillStyle=g;x.fill();
+}
+
+/* ---------- spot + limit trading ---------- */
+function setSide(s){side=s;$('sb').classList.toggle('on',s==='buy');$('ss').classList.toggle('on',s==='sell');renderPanel()}
+function setOType(t){
+  otype=t;document.querySelectorAll('#otype button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  $('limRow').style.display=t==='limit'?'block':'none';
+  if(t==='limit'&&!$('limit').value)$('limit').value=px(selected)||'';
+  renderPanel();
+}
+function orderPrice(){return otype==='limit'?(parseFloat($('limit').value)||0):px(selected)}
+function renderPanel(){
+  $('avail').textContent=token?(side==='buy'?U(bal.USDT||0):q6(bal[selected]||0)+' '+selected):'Log in to trade';
+  if(otype==='limit'&&!$('limit').value&&px(selected))$('limit').value=px(selected);
+  const b=$('go');b.className='submit '+side;
+  b.textContent=(otype==='limit'?'Limit ':'')+(side==='buy'?'Buy ':'Sell ')+selected;
+  updateCost();
+}
+function updateCost(){
+  const q=parseFloat($('qty').value)||0,c=q*orderPrice();
+  $('cost').textContent=U(c);$('fee').textContent=(c*0.001).toFixed(4)+' USDT';
+}
+function pct(p){
+  const price=orderPrice();if(!price)return;
+  let q=side==='buy'?((bal.USDT||0)*p/100)/(price*1.001):(bal[selected]||0)*p/100;
+  q=Math.floor(q*1e6)/1e6;$('qty').value=q||'';updateCost();
+}
+async function trade(){
+  if(!token)return openAuth('login');
+  const qty=parseFloat($('qty').value);
+  if(!qty||qty<=0)return toast('Enter a quantity first.',false);
+  try{
+    if(otype==='limit'){
+      const limit=parseFloat($('limit').value);
+      if(!limit||limit<=0)return toast('Enter a limit price.',false);
+      const r=await api('order',{side,coin:selected,qty,limit});
+      (r.events||[]).forEach(showEvent);
+      if(!r.filled)toast(`Limit ${side} order placed at ${fmt(limit)} USDT.`);
+    }else{
+      const r=await api('trade',{side,coin:selected,qty});
+      toast(`${side==='buy'?'Bought':'Sold'} ${qty} ${selected} at ${fmt(r.price)} USDT`);
+    }
+    $('qty').value='';await refreshUser();renderAll();
+  }catch(e){toast(e.message,false)}
+}
+function pick(c){
+  selected=c;$('limit').value='';
+  if(location.hash==='#trade'){renderAll();drawChart();loadBook()}else go('trade');
+}
+function renderOrders(){
+  if(!token){setH('ordersBox','<div class="mute" style="padding:8px 0">Log in to place orders.</div>');return}
+  if(!orders.length){setH('ordersBox','<div class="mute" style="padding:8px 0">No open orders. Choose Limit to place one.</div>');return}
+  setH('ordersBox',`<table><thead><tr><th>Pair</th><th>Side</th><th>Quantity</th><th>Limit</th><th>Now</th><th></th></tr></thead><tbody>${orders.map(o=>
+    `<tr><td><span class="coin">${dot(o.coin)}${o.coin}</span></td><td class="${o.side==='buy'?'up':'down'}">${o.side.toUpperCase()}</td><td>${q6(o.qty)}</td><td>${fmt(o.limit)}</td><td>${fmt(px(o.coin))}</td><td><button class="btn ghost sm" onclick="run('order/cancel',{id:'${o.id}'},'Order cancelled.')">Cancel</button></td></tr>`).join('')}</tbody></table>`);
+}
+
+/* ---------- price alerts ---------- */
+function setAdir(d){adir=d;$('adA').classList.toggle('on',d==='above');$('adB').classList.toggle('on',d==='below')}
+async function addAlert(){
+  if(!token)return openAuth('login');
+  const price=parseFloat($('aPrice').value);
+  if(!price||price<=0)return toast('Enter an alert price.',false);
+  await run('alert/add',{coin:selected,dir:adir,price},`Alert set: ${selected} ${adir} ${fmt(price)} USDT.`);
+  $('aPrice').value='';
+}
+function renderAlerts(){
+  if(!token){setH('alertsBox','<div class="mute">Log in to set alerts.</div>');return}
+  setH('alertsBox',alerts.length?alerts.map(a=>
+    `<div class="arow"><span>${a.done?'✅':'⏳'} <b>${a.coin}</b> ${a.dir} ${fmt(a.price)}</span><span class="x" title="Delete" onclick="run('alert/delete',{id:'${a.id}'})">✕</span></div>`).join(''):'<div class="mute">No alerts yet.</div>');
+}
+
+/* ---------- futures ---------- */
+function buildFut(){
+  $('fcoin').innerHTML=COINS.map(c=>`<option>${c}</option>`).join('');$('fcoin').value=selected;buildLev();
+}
+function buildLev(){$('flev').innerHTML=LEVS.map(l=>`<button class="${l===flev?'on':''}" onclick="setLev(${l})">${l}x</button>`).join('')}
+function setLev(l){flev=l;buildLev();updFut()}
+function setFside(s){fside=s;$('fl').classList.toggle('on',s==='long');$('fs').classList.toggle('on',s==='short');updFut()}
+function updFut(){
+  const c=$('fcoin').value,m=parseFloat($('fmargin').value)||0,p=px(c);
+  $('favail').textContent=token?U(bal.USDT||0):'Log in to trade';
+  $('fentry').textContent=p?fmt(p)+' USDT':'--';
+  $('fsize').textContent=p&&m?(m*flev/p).toPrecision(4)+' '+c:'--';
+  $('fliq').textContent=p?fmt(fside==='long'?p*(1-0.9/flev):p*(1+0.9/flev))+' USDT':'--';
+  const b=$('fgo');b.className='submit '+(fside==='long'?'buy':'sell');b.textContent=`Open ${fside} ${c} ${flev}x`;
+}
+async function openFut(){
+  if(!token)return openAuth('login');
+  const coin=$('fcoin').value,margin=parseFloat($('fmargin').value);
+  if(!margin||margin<10)return toast('Minimum margin is 10 USDT.',false);
+  const r=await run('futures/open',{coin,side:fside,lev:flev,margin},`Opened ${fside} ${coin} ${flev}x.`);
+  if(r)$('fmargin').value='';
+  updFut();
+}
+async function closePos(id){
+  const r=await run('futures/close',{id});
+  if(r)toast(`Position closed. PnL ${r.pnl>=0?'+':''}${r.pnl.toFixed(2)} USDT`,r.pnl>=0);
+}
+function renderFutures(){
+  if(!token){setH('posRows','<tr><td colspan="9" class="mute" style="text-align:center;padding:30px">Log in to trade futures.</td></tr>')}
+  else setH('posRows',positions.length?positions.map(p=>{
+    const v=pnl(p),pc=v/p.margin*100;
+    return `<tr><td><span class="coin">${dot(p.coin)}${p.coin}</span> <span class="mute">${p.lev}x</span></td><td class="${p.side==='long'?'up':'down'}">${p.side}</td><td>${(+p.size).toPrecision(4)}</td><td>${fmt(p.entry)}</td><td>${fmt(px(p.coin))}</td><td>${fmt(liqPrice(p))}</td><td>${p.margin.toFixed(2)}</td><td class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(2)} (${pc.toFixed(1)}%)</td><td><button class="btn ghost sm" onclick="closePos('${p.id}')">Close</button></td></tr>`}).join('')
+    :'<tr><td colspan="9" class="mute" style="text-align:center;padding:30px">No open positions.</td></tr>');
+  updFut();
+}
+
+/* ---------- earn ---------- */
+function earnDlg(coin){
+  if(!token)return openAuth('login');
+  openDlg({title:`Subscribe ${coin}`,sub:`${apy[coin]}% APY · available ${q6(bal[coin]||0)} ${coin}`,
+    fields:[{id:'amt',label:`Amount (${coin})`,type:'number',ph:'0.00'}],ok:'Subscribe',
+    run:async v=>{await api('earn/subscribe',{coin,amt:parseFloat(v.amt)});await refreshUser();renderAll();toast(`Subscribed ${v.amt} ${coin}.`)}});
+}
+function renderEarn(){
+  setH('earnProducts',Object.keys(apy).map(c=>`<tr><td><span class="coin">${dot(c)}${c}</span></td><td class="up">${apy[c]}%</td><td>${q6(bal[c]||0)}</td><td><button class="btn sm" onclick="earnDlg('${c}')">Subscribe</button></td></tr>`).join(''));
+  if(!token){setH('earnRows','<tr><td colspan="5" class="mute" style="text-align:center;padding:24px">Log in to subscribe.</td></tr>');return}
+  setH('earnRows',earn.length?earn.map(e=>`<tr><td><span class="coin">${dot(e.coin)}${e.coin}</span></td><td>${q6(e.amt)}</td><td class="up">+${accr(e).toFixed(8)}</td><td>${e.apy}%</td><td><button class="btn ghost sm" onclick="run('earn/redeem',{id:'${e.id}'},'Redeemed with interest.')">Redeem</button></td></tr>`).join('')
+    :'<tr><td colspan="5" class="mute" style="text-align:center;padding:24px">No subscriptions yet.</td></tr>');
+}
+
+/* ---------- leaderboard ---------- */
+async function loadBoard(){
+  try{board=(await api('leaderboard')).top}catch(e){}
+  const medal=['🥇','🥈','🥉'];
+  setH('boardRows',board.length?board.map((r,i)=>`<tr><td>${medal[i]||i+1}</td><td>${esc(r.name)}</td><td>${usd(r.equity)}</td><td class="${r.pct>=0?'up':'down'}">${r.pct>=0?'+':''}${r.pct.toFixed(2)}%</td></tr>`).join('')
+    :'<tr><td colspan="4" class="mute" style="text-align:center;padding:30px">No traders ranked yet. Make a trade to appear here!</td></tr>');
+}
+
+/* ---------- settings (rendered on page open, so typing is never interrupted) ---------- */
+function renderSettings(){
+  const box=$('settingsBox');
+  if(!token){box.innerHTML=emptyLogin('Settings');return}
+  const curOpts=Object.keys(SYM).map(c=>`<option value="${c}" ${c===prefs.cur?'selected':''}>${c} (${SYM[c]})</option>`).join('');
+  const coinOpts=COINS.map(c=>`<option ${c===prefs.coin?'selected':''}>${c}</option>`).join('');
+  const ivls=['1m','15m','1h','4h','1d'].map(i=>`<button class="${i===prefs.ivl?'on':''}" onclick="setDefIvl('${i}')">${i}</button>`).join('');
+  box.innerHTML=`
+  <div class="pagetitle">Settings</div>
+  <div class="sgrid">
+    <div class="card"><h2>Account</h2>
+      <label style="margin-top:0">Display name</label><input id="sName" maxlength="30" value="${esc(displayName())}">
+      <label>Email</label><input value="${esc(email||'')}" disabled>
+      <label style="display:flex;gap:10px;align-items:center;margin-top:16px;color:var(--text);font-size:14px"><input type="checkbox" style="width:auto" ${hideBoard?'':'checked'} onchange="setBoard(this.checked)"> Show me on the leaderboard</label>
+      <button class="btn" style="margin-top:14px" onclick="saveName()">Save name</button>
+    </div>
+    <div class="card"><h2>Appearance</h2>
+      <label style="margin-top:0">Theme</label>
+      <div class="opts"><button class="${prefs.theme==='dark'?'on':''}" onclick="setTheme('dark')">🌙 Dark</button><button class="${prefs.theme==='light'?'on':''}" onclick="setTheme('light')">☀️ Light</button></div>
+      <label>Display currency</label><select onchange="setCur(this.value)">${curOpts}</select>
+      ${prefs.cur==='USD'?'':`<label>Exchange rate (1 USD = ? ${prefs.cur})</label><input type="number" step="any" min="0" value="${prefs.rate[prefs.cur]}" oninput="setRate(this.value)">`}
+      <div class="note">Currency only changes how prices and balances are shown. Trades always settle in USDT.</div>
+    </div>
+    <div class="card"><h2>Trading defaults</h2>
+      <label style="margin-top:0">Default coin</label><select onchange="setDefCoin(this.value)">${coinOpts}</select>
+      <label>Default chart interval</label><div class="opts">${ivls}</div>
+    </div>
+    <div class="card"><h2>Security</h2>
+      <label style="margin-top:0">Current password</label><input id="sCp" type="password" autocomplete="current-password">
+      <label>New password (min 8 characters)</label><input id="sNp" type="password" autocomplete="new-password">
+      <button class="btn" style="margin-top:14px" onclick="changePw()">Update password</button>
+    </div>
+  </div>
+  <div class="card danger" style="margin-top:14px"><h2>Danger zone</h2>
+    <p class="mute" style="margin-bottom:14px">Reset puts you back at 10,000 USDT with an empty history. Deleting removes your account for good.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn ghost" onclick="resetAcct()">Reset account</button><button class="btn red" onclick="deleteAcct()">Delete account</button></div>
+  </div>`;
+}
+async function saveName(){
+  const v=$('sName').value.trim();
+  if(!v)return toast('Name cannot be empty.',false);
+  try{const d=await api('profile',{name:v});name=d.name;localStorage.setItem('name',name);toast('Name updated.');renderAll()}
+  catch(e){toast(e.message,false)}
+}
+function setBoard(show){run('profile',{hideBoard:!show},show?'You are on the leaderboard.':'You are hidden from the leaderboard.')}
+async function changePw(){
+  const c=$('sCp').value,n=$('sNp').value;
+  if(!c||!n)return toast('Fill in both password fields.',false);
+  try{await api('password',{current:c,next:n});$('sCp').value='';$('sNp').value='';toast('Password updated.')}
+  catch(e){toast(e.message,false)}
+}
+function setTheme(t){prefs.theme=t;savePrefs();applyTheme();renderSettings();drawChart();drawPortfolio()}
+function setCur(c){prefs.cur=c;savePrefs();renderSettings();renderAll()}
+function setRate(v){const n=parseFloat(v);if(n>0){prefs.rate[prefs.cur]=n;savePrefs();renderAll()}}
+function setDefCoin(c){prefs.coin=c;selected=c;savePrefs();toast(`Default coin set to ${c}.`)}
+function setDefIvl(i){prefs.ivl=i;ivl=i;savePrefs();buildIvl();renderSettings();toast(`Default chart interval set to ${i}.`)}
+async function resetAcct(){
+  if(!confirm('Reset your account? Your balance returns to 10,000 USDT and your history, orders and positions are erased.'))return;
+  await run('reset',{},'Account reset to 10,000 USDT.');
+}
+function deleteAcct(){
+  openDlg({title:'Delete account',sub:'This permanently removes your account and cannot be undone.',
+    fields:[{id:'pw',label:'Confirm your password',type:'password'}],ok:'Delete forever',
+    run:async v=>{await api('delete',{password:v.pw});logout();toast('Your account was deleted.')}});
+}
+
+/* ---------- chart ---------- */
+function buildIvl(){
+  $('ivl').innerHTML=['1m','15m','1h','4h','1d'].map(i=>`<button class="${i===ivl?'on':''}" onclick="setIvl('${i}')">${i}</button>`).join('');
+}
+function setIvl(i){ivl=i;buildIvl();drawChart()}
+async function getK(coin,iv){
+  const viaBinance=async()=>(await jget(`${BIN}/klines?symbol=${coin}USDT&interval=${iv}&limit=90`,5000)).map(a=>[+a[1],+a[2],+a[3],+a[4]]);
+  const d=await Promise.any([viaBinance(),api(`klines?coin=${coin}&ivl=${iv}`)]);
+  kc[coin+iv]={t:Date.now(),data:d};
+  return d;
+}
+function setupCanvas(){
+  const cv=$('chart');if(!cv.clientWidth)return null;
+  const d=window.devicePixelRatio||1;cv.width=cv.clientWidth*d;cv.height=cv.clientHeight*d;
+  const x=cv.getContext('2d');x.setTransform(d,0,0,d,0,0);
+  return{x,W:cv.clientWidth,H:cv.clientHeight};
+}
+function paintMsg(t){
+  const c=setupCanvas();if(!c)return;
+  c.x.clearRect(0,0,c.W,c.H);c.x.fillStyle=cssv('--mute');c.x.font='13px Inter,Arial';c.x.textAlign='left';c.x.fillText(t,20,30);
+}
+function paint(raw){
+  const c=setupCanvas();if(!c||!raw||!raw.length)return;
+  const {x,W,H}=c,k=raw.map(a=>({o:a[0],h:a[1],l:a[2],c:a[3]}));
+  const hi=Math.max(...k.map(a=>a.h)),lo=Math.min(...k.map(a=>a.l)),pad=((hi-lo)||hi*0.01)*.05;
+  const top=hi+pad,bot=lo-pad,y=v=>10+(top-v)/(top-bot)*(H-20),st=(W-60)/k.length;
+  const grid=cssv('--line'),mute=cssv('--mute');
+  x.clearRect(0,0,W,H);x.font='11px Inter,Arial';x.textAlign='right';
+  for(let i=0;i<5;i++){const v=bot+(top-bot)*i/4,yy=y(v);
+    x.strokeStyle=grid;x.beginPath();x.moveTo(0,yy);x.lineTo(W-58,yy);x.stroke();
+    x.fillStyle=mute;x.fillText(fmt(v),W-4,yy+4)}
+  k.forEach((a,i)=>{const cx=i*st+st/2,col=a.c>=a.o?'#0ecb81':'#f6465d';x.strokeStyle=x.fillStyle=col;
+    x.beginPath();x.moveTo(cx,y(a.h));x.lineTo(cx,y(a.l));x.stroke();
+    x.fillRect(cx-st*.32,y(Math.max(a.o,a.c)),st*.64,Math.max(1,Math.abs(y(a.o)-y(a.c))))});
+  const last=k[k.length-1].c,ly=y(last);
+  x.setLineDash([4,4]);x.strokeStyle='#fcd535';x.beginPath();x.moveTo(0,ly);x.lineTo(W-58,ly);x.stroke();x.setLineDash([]);
+  x.fillStyle='#fcd535';x.fillRect(W-58,ly-9,58,18);x.fillStyle='#000';x.fillText(fmt(last),W-4,ly+4);
+}
+async function drawChart(){
+  if(!$('v-trade').classList.contains('on'))return;
+  const key=selected+ivl;
+  if(kc[key])paint(kc[key].data);else paintMsg('Loading chart…');
+  try{
+    const d=await getK(selected,ivl);
+    if(selected+ivl===key)paint(d);
+  }catch(e){if(!kc[key])paintMsg('Chart unavailable right now')}
+}
+
+/* ---------- order book ---------- */
+async function loadBook(){
+  if(!$('v-trade').classList.contains('on'))return;
+  const coin=selected;
+  try{
+    const direct=async()=>{
+      const [b,t]=await Promise.all([jget(`${BIN}/depth?symbol=${coin}USDT&limit=8`,5000),jget(`${BIN}/trades?symbol=${coin}USDT&limit=12`,5000)]);
+      return{asks:b.asks,bids:b.bids,trades:t.map(a=>({price:a.price,qty:a.qty,sell:a.isBuyerMaker}))};
+    };
+    const b=await Promise.any([direct(),api('book?coin='+coin)]);
+    if(coin!==selected)return;
+    const row=(a,c)=>`<div><span class="${c}">${fmt(a[0])}</span><span>${(+a[1]).toPrecision(4)}</span></div>`;
+    setH('asks',b.asks.slice().reverse().map(a=>row(a,'down')).join(''));
+    setH('bids',b.bids.map(a=>row(a,'up')).join(''));
+    $('mid').textContent=fmt(px(coin))+' USDT';
+    setH('trades',b.trades.slice().reverse().map(a=>`<div><span class="${a.sell?'down':'up'}">${fmt(a.price)}</span><span>${(+a.qty).toPrecision(3)}</span></div>`).join(''));
+  }catch(e){
+    setH('asks','<div class="mute">Order book unavailable right now</div>');
+    setH('bids','');setH('trades','');$('mid').textContent='';
+  }
+}
+
+/* ---------- start ---------- */
+applyTheme();renderModal();buildIvl();buildFut();route();   // shows saved prices instantly
+fetchTickers().then(()=>{getK(selected,ivl).catch(()=>{})});
+refreshUser().then(renderAll);
+setInterval(()=>{if(!document.hidden)fetchTickers()},10000);
+setInterval(()=>{if(!document.hidden&&token)refreshUser().then(renderAll)},15000);
+setInterval(()=>{if(!document.hidden)loadBook()},8000);
+setInterval(()=>{if(!document.hidden)drawChart()},30000);
+setInterval(()=>{if($('v-earn').classList.contains('on'))renderEarn()},1000);
+setInterval(()=>{if($('v-board').classList.contains('on'))loadBoard()},60000);
+window.addEventListener('resize',()=>{drawChart();drawPortfolio()});
+</script>
+</body>
+</html>
